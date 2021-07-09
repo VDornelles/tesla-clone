@@ -1,9 +1,9 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Wrap = styled.div`
   width: 100vw;
   height: 100vh;
-  background-image: url('images/model-s.jpg');
+  background-image: ${(props) => `url('images/${props.bgImage}')`};
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

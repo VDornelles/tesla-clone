@@ -10,7 +10,7 @@ function Section({
   rightBtnText
 }) {
   return (
-    <Wrap>
+    <Wrap bgImage={backgroundImg}>
       <ItemText>
         <h1>{title}</h1>
         <p> {description} </p>
@@ -20,9 +20,12 @@ function Section({
           <LeftButton>
             {leftBtnText}
           </LeftButton>
-          <RightButton>
-            {rightBtnText}
-          </RightButton>
+          {rightBtnText && 
+            <RightButton>
+              {rightBtnText}
+            </RightButton>
+          }
+          
         </ButtonGroup>
         <DownArrow src="/images/down-arrow.svg"/>
       </Buttons>
