@@ -1,25 +1,42 @@
-import React from 'react'
-import { Container, CustomMenu, Menu, RightMenu } from './styles'
-
-
+import React, { useState } from 'react'
+import { BugerNav, CloseWrapper, Container, CustomClose, CustomMenu, Menu, RightMenu } from './styles'
+import { selectCars } from '../../features/car/carSlice';
+import { useSelector } from 'react-redux';
 
 function Header() {
+  const [sideBarStatus, setSideBarStatus] = useState(false);
+  const cars= useSelector(selectCars)
+
+
   return (
     <Container>
       <a href="">
         <img src="/images/logo.svg" alt="Tesla Logo" />
       </a>
       <Menu>
-         <a href="#">Model S</a>
-         <a href="#">Model Y</a>
-         <a href="#">Model 3</a>
-         <a href="#">Model X</a>
+        {cars && cars.map((car, index) => (
+             <a key={index} href="as">{ car }</a>
+        ))}
+        
       </Menu>
       <RightMenu>
         <a href="#"> Shop</a>
         <a href="#"> Tesla Account</a>
-        <CustomMenu />
+        <CustomMenu onClick={() => setSideBarStatus(true)}/>
       </RightMenu>
+      <BugerNav show={sideBarStatus}>
+        <CloseWrapper onClick={() => setSideBarStatus(false)}>
+          <CustomClose />
+        </CloseWrapper>
+        {cars && cars.map((car, index) => (
+              <li key={index}><a href="as">{car}</a></li>
+        ))}
+        <li><a href="#"> Existing Inventory</a></li>
+        <li><a href="#"> Used Inventory</a></li>
+        <li><a href="#"> Trade-in</a></li>
+        <li><a href="#"> CyberTruck</a></li>
+        <li><a href="#"> Roadster</a></li>
+      </BugerNav>
     </Container>
   )
 }
