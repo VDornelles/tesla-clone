@@ -18,20 +18,24 @@ function Section({
         </ItemText>
       </Fade>
       <Buttons>
-        <Fade bottom>
+       
           <ButtonGroup >
-            <LeftButton>
-              {leftBtnText}
-            </LeftButton>
-            {
-              rightBtnText && 
+            <Fade left>
+              <LeftButton>
+                {leftBtnText}
+              </LeftButton>
+            </Fade>
+            <Fade right>
+              {
+                rightBtnText && 
                 <RightButton>
-                  {rightBtnText}
-                </RightButton>
-            }
+                    {rightBtnText}
+                  </RightButton>
+              }
+            </Fade>
             
           </ButtonGroup>
-        </Fade>
+        
         <DownArrow src="/images/down-arrow.svg"/>
       </Buttons>
     </Wrap>
